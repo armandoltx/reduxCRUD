@@ -20,6 +20,7 @@ export function crearNuevoProductoAction(producto) {
   }
 }
 
+// Las acciones se pasan como objetos al reducer
 const agregarProducto = () => ({
   type: AGREGAR_PRODUCTO,
   payload: true // payload es la parte que modifica los datos, el state
@@ -32,6 +33,12 @@ const agregarProductoExito = producto => ({
 })
 
 // si hubo un error
-const agregarProductoError = () => ({
+const agregarProductoError = estado => ({
+  type: AGREGAR_PRODUCTO_ERROR,
+  payload: estado
 
 });
+
+// El payload es la parte q modifica el state
+// Dispatch es lo q manda ejecutar las acciones
+// Las acciones se pasan como objetos al reducer
