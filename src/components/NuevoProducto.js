@@ -15,6 +15,13 @@ const NuevoProducto = () => {
   // dispatch lo usamos para llamar las funciones q tenemos en los actions
   const dispatch = useDispatch();
 
+  // Acceder al state del store
+  // const cargando = useSelector( state => state ) // truco para ver todo el state
+  // console.log(cargando) // sale productos que viene del reducer
+  const cargando = useSelector(state => state.productos.loading)
+  const error = useSelector(state => state.productos.error)
+
+
   // mandar llamar el action de productoAction
   const agregarProducto = (producto) => dispatch(crearNuevoProductoAction(producto));
 
@@ -76,6 +83,8 @@ const NuevoProducto = () => {
                 className="btn btn-primary font-weight-bold text-uppercase d-block w-100"
               >Agregar</button>
             </form>
+            {cargando ? <p>Cargando...</p> : null}
+            {error ? <p className="alert alert-danger p2 mt-4 text-center">Hubo un error</p> : null}
           </div>
         </div>
       </div>
