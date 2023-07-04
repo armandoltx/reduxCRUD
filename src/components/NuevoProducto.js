@@ -3,9 +3,13 @@ import React, {useState} from 'react'
 // Actions de Redux
 import { crearNuevoProductoAction } from '../actions/productoActions'
 import { useDispatch, useSelector } from 'react-redux';
+import {useNavigate} from "react-router-dom";
 
 
+
+// Cuando instalamos react router dom y nuestros componentes estan en el routing tenemos acceso a history
 const NuevoProducto = () => {
+  let navigate = useNavigate();
 
   // state del componente
   const [nombre, guardarNombre] = useState('');
@@ -41,7 +45,11 @@ const NuevoProducto = () => {
       nombre,
       precio
     })
+
+    // Redireccionar al home
+    navigate("/");
   }
+
   return (
     <div className="row justify-content-center">
       <div className="col-md-8">
