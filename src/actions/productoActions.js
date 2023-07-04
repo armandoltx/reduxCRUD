@@ -5,3 +5,10 @@ import {
 } from '../types';
 
 // esta funcion es la q se usa en la vista
+
+// Crear nuevos productos
+export function crearNuevoProductoAction(producto) {
+  return () => {
+    console.log('desde action')
+  }
+}
