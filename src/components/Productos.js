@@ -1,6 +1,20 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
+
+// Redux
+import {useSelector, useDispatch} from 'react-redux';
+import {obtenerProductosAction} from '../actions/productoActions';
 
 const Productos = () => {
+  const dispatch = useDispatch();
+
+  // para hacer la consulta a la BD cuando el componente cargue
+  useEffect(() => {
+
+    // Consultar la api
+    const cargarProductos = () => dispatch(obtenerProductosAction());
+    cargarProductos();
+    // eslint-disable-next-line
+  }, []);
 
   return (
     <Fragment>

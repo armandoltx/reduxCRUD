@@ -19,7 +19,7 @@ const initialState = {
 export default function(state = initialState, action) {
   switch (action.type) {
     case AGREGAR_PRODUCTO:
-    case COMENZAR_DESCARGA_PRODUCTOS
+    case COMENZAR_DESCARGA_PRODUCTOS:
       return {
         ...state,
         loading: action.payload
