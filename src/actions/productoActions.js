@@ -106,12 +106,18 @@ const descargaProductosError = () => ({
 export function borrarProductoAction(id) {
   return async (dispatch) => {
     dispatch(obtenerProductoEliminar(id))
-
-    console.log(id)
+    // console.log(id)
 
     try {
-      await clienteAxios.delete(`/productos/${id}`);
-      dispatch(eliminarProductoExito());
+      await clienteAxios.delete(`/productos/${id}`); // lo elimina de la BD
+      dispatch(eliminarProductoExito()); // lo elimina del state
+
+      // Si se elimina, mostrar alerta
+      Swal.fire(
+        'Eliminado',
+        'El producto se eliminó correctamente',
+        'success'
+      )
 
     } catch (error) {
       console.log(error);

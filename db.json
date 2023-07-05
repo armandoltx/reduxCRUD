@@ -44,11 +44,6 @@
       "nombre": "Zumo de Naranja",
       "precio": 35,
       "id": 10
-    },
-    {
-      "nombre": "queso fresco",
-      "precio": 45,
-      "id": 11
     }
   ]
 }
