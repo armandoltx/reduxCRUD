@@ -44,6 +44,11 @@
       "nombre": "Zumo de Naranja",
       "precio": 35,
       "id": 10
+    },
+    {
+      "nombre": "Pan Bimbo",
+      "precio": 22,
+      "id": 11
     }
   ]
 }
