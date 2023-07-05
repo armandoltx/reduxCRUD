@@ -1,4 +1,5 @@
 import React, { Fragment, useEffect } from 'react';
+import Producto from './Producto';
 
 // Redux
 import {useSelector, useDispatch} from 'react-redux';
@@ -16,6 +17,10 @@ const Productos = () => {
     // eslint-disable-next-line
   }, []);
 
+  // useSelector es la forma en la obtienes el state
+  const productos = useSelector( state => state.productos.productos )
+  // console.log(productos)
+
   return (
     <Fragment>
       <h2 className="text-center my-5">Listado de Productos</h2>
@@ -29,6 +34,14 @@ const Productos = () => {
           </tr>
         </thead>
         <tbody>
+          {productos.length === 0 ? 'No hay productos' : (
+            productos.map(producto => (
+              <Producto
+                key={producto.id}
+                producto={producto}
+              />
+            ))
+          )}
         </tbody>
       </table>
     </Fragment>
