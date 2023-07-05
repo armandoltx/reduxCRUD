@@ -1,20 +1,40 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 //useDispatch ==> ejecuta las acciones
 //useSelector ==> para acceder al state
 import { editarProductoAction } from '../actions/productoActions';
 
 const EditarProducto = () => {
+  // nuevo local state
+  const [producto, guardarProducto] = useState({
+    nombre: '',
+    precio: ''
+  })
   // producto a editar
-  const producto = useSelector(state => state.productos.productoeditar)
+  const productoeditar = useSelector(state => state.productos.productoeditar)
   // console.log(producto)
-  if(!producto) return null
+
+  // llenar el state automaticamente
+  useEffect(() => {
+    guardarProducto(productoeditar)
+  }, [productoeditar] )
+
+  // Leer los datos del formulario
+  const onChangeFormulario = e => {
+    guardarProducto({
+      ...producto,
+      [e.target.name]: e.target.value
+    })
+  }
+
+
+
   const { nombre, precio, id  } = producto
 
   const submitEditarProducto = e => {
     e.preventDefault();
 
-    editarProductoAction(producto);
+    editarProductoAction(producto)
   }
 
   return (
@@ -37,6 +57,7 @@ const EditarProducto = () => {
                   placeholder="Nombre Producto"
                   name="nombre"
                   value={nombre}
+                  onChange={onChangeFormulario}
                 />
               </div>
 
@@ -48,6 +69,7 @@ const EditarProducto = () => {
                   placeholder="Precio Producto"
                   name="precio"
                   value={precio}
+                  onChange={onChangeFormulario}
                 />
               </div>
 
