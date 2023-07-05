@@ -2,6 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 //useDispatch ==> ejecuta las acciones
 //useSelector ==> para acceder al state
+import { editarProductoAction } from '../actions/productoActions';
 
 const EditarProducto = () => {
   // producto a editar
@@ -9,6 +10,12 @@ const EditarProducto = () => {
   // console.log(producto)
   if(!producto) return null
   const { nombre, precio, id  } = producto
+
+  const submitEditarProducto = e => {
+    e.preventDefault();
+
+    editarProductoAction(producto);
+  }
 
   return (
     <div className="row justify-content-center">
@@ -20,7 +27,7 @@ const EditarProducto = () => {
             </h2>
 
             <form
-
+              onSubmit={submitEditarProducto}
             >
               <div className="form-group">
                 <label>Nombre Producto</label>
