@@ -108,6 +108,15 @@ export function borrarProductoAction(id) {
     dispatch(obtenerProductoEliminar(id))
 
     console.log(id)
+
+    try {
+      await clienteAxios.delete(`/productos/${id}`);
+      dispatch(eliminarProductoExito());
+
+    } catch (error) {
+      console.log(error);
+      dispatch(eliminarProductoError());
+    }
   }
 }
 
@@ -116,11 +125,11 @@ const obtenerProductoEliminar = id => ({
   payload: id
 })
 
-const eliminarProductoExito = () => ({
+const eliminarProductoExito = () => ({ // la creamos en 583
   type: PRODUCTO_ELIMINADO_EXITO
 })
 
-const eliminarProductoError = () => ({
+const eliminarProductoError = () => ({ // la creamos en 583
   type: PRODUCTO_ELIMINADO_ERROR,
   payload: true
 });
