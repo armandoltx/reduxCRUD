@@ -3,8 +3,12 @@ import { useDispatch, useSelector } from 'react-redux';
 //useDispatch ==> ejecuta las acciones
 //useSelector ==> para acceder al state
 import { editarProductoAction } from '../actions/productoActions';
+import {useNavigate} from "react-router-dom";
 
 const EditarProducto = () => {
+  const dispatch = useDispatch();
+  let navigate = useNavigate();
+
   // nuevo local state
   const [producto, guardarProducto] = useState({
     nombre: '',
@@ -27,14 +31,12 @@ const EditarProducto = () => {
     })
   }
 
-
-
-  const { nombre, precio, id  } = producto
+  const { nombre, precio } = producto
 
   const submitEditarProducto = e => {
     e.preventDefault();
-
-    editarProductoAction(producto)
+    dispatch(editarProductoAction(producto));
+    navigate("/")
   }
 
   return (
