@@ -5,8 +5,13 @@ const initialState = {
   alerta: null
 }
 
-export deafult function(state = initialState, actio) {
+export default function(state = initialState, action) {
   switch(action.type) {
+    case MOSTRAR_ALERTA:
+      return {
+        ...state,
+        alerta: action.payload
+      }
 
     default:
       return state;
